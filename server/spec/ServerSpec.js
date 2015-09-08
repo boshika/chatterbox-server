@@ -1,4 +1,5 @@
-var handler = require('../request-handler');
+var handler = {};
+handler.requestHandler = require('../request-handler');
 var expect = require('../../node_modules/chai/chai').expect;
 var stubs = require('./Stubs');
 

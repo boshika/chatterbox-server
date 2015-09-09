@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Socket Whatever</title>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <script>
+    var socket = io.connect('http://localhost:3000');
+    socket.on('server-response', function(data) {
+      console.log("The server says:" + data);
+    });
+  </script>
+</body>
+</html>

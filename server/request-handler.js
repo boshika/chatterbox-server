@@ -60,6 +60,17 @@ var requestHandler = function(request, response) {
     var fileName = request.url;
     if(fileName === '/') fileName = '/index.html';
 
+/*  // security addition
+    fileName = decodeURIComponent(fileName);
+    var parsedURL = require('url').parse(fileName);
+    var path = require('path');
+    fileName = parsedURL.pathname;
+    fileName = path.join(ROOT_DIR,fileName);
+    if (fileName.substr(0,ROOT_DIR.length)!==ROOT_DIR) {
+      response.writeHead(403);
+      response.end('Nope');
+    }
+*/
     // read our file WARNING: UNSAFE!!!!
     fs.readFile(ROOT_DIR+fileName, function(err, data){
       // if there's an error loading the file this exists

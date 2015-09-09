@@ -13,7 +13,7 @@ var app = {
   // server: 'https://api.parse.com/1/classes/chatterbox',
   server: 'http://127.0.0.1:3000/classes/chatterbox',
   // add socket to app
-  socket: io.connect('http://127.0.0.1:3000'),
+  socket: io.connect('http://127.0.0.1:3000/classes/chatterbox'),
   connectionType: 'socket',
   // time is initial time to try reconnecting in ms
   time: 1000,
@@ -25,7 +25,6 @@ var app = {
     }
     if (this.connectionType==='socket') {
       this.socket.on('new-message', function(data) {
-        console.log(data);
         var addedRoom = data.results.slice(0);
         addedRoom.unshift({roomname:'View All'});
         var roomSelect = d3.select('#rooms').selectAll('option')
